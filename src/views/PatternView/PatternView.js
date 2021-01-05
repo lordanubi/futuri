@@ -1,26 +1,22 @@
 import React from 'react';
 import Atom from '../../patterns/Atom/Atom';
+import {HorizontalReflect, VerticalReflect,logoHeight} from './PatternUtils';
 import './PatternView.scss';
 function PatternView(props)  {
   return(
       <svg
       width="100%"
       height="100%"
-      viewBox="0 0 1000 688.2" 
+      viewBox={"0 0 1000 " + logoHeight}
       className="PatternView"
       {...props}
     >
-      
-      <g id="atomReversed">
-          <Atom id="atom" />
-          <use  href="#atom" x={-500} transform="scale(-1, 1)" />
-      </g>
+      <defs>
+        <Atom id="atom" />
+      </defs>
+      <VerticalReflect source="atom">
 
-
-    
-      <use href="#atomReversed" y={-688.2} x={+250} transform="scale(1, -1)" />
-
-
+      </VerticalReflect>
     </svg>
   )
 }
