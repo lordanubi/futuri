@@ -1,5 +1,6 @@
 import React from 'react';
 const logoHeight = 688.2
+const logoWidth = 1000
 const spacing = 100
 function VerticalReflect(props)  {
   return(
@@ -16,4 +17,5 @@ export {
 VerticalReflect,
 HorizontalReflect,
 logoHeight,
+logoWidth
 }

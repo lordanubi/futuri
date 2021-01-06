@@ -1,4 +1,14 @@
+$patterWidth: 50%;
+$patterHeight: 50%;
 .PatternView {
-    
+    use {
+        transform-origin: center;
+    }
+    .mirrorHor {
+        transform: scaleX(-1);
+    }
+    .mirrorVer {
+        transform: scaleY(-1);
+    }
 }
 
