@@ -1,12 +1,9 @@
-symbol {
-    fill: white;
     use {
         transform-origin: center;
     }
     .mirrorHor {
-        transform: scaleX(-1);
+        --transf: scaleX(-1);
     }
     .mirrorVer {
         transform: scaleY(-1);
     }
-}

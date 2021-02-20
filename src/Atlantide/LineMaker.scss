@@ -1,0 +1,9 @@
+    use {
+        transform-origin: center;
+    }
+    use.mirrorHor {
+        --transf: scaleX(-1);
+    }
+    use.mirrorVer {
+        transform: scaleY(-1);
+    }

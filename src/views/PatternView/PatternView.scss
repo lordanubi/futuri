@@ -1,13 +1,10 @@
-svg {
-    width: 100%;
-    height: 100%;
-    g {
-        transform-origin: center;
+.svgViewer {
+    //width: 100%;
+    height:3%;
+    use {
+        color: hsl(195.6deg, 100%, 50%)
     }
-    .mirrorHor {
-        transform: scaleX(-1);
-    }
-    .mirrorVer {
-        transform: scaleY(-1);
+    use.mirrorHor {
+        color: hsl(45.6deg, 100%, 50%);
     }
 }
