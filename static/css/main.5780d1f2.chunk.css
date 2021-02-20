@@ -1,0 +1,2 @@
+#root,body,html{height:100%}body{margin:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.symbol{display:none}svg,symbol{overflow:visible!important}body{background-color:#0e0e0e}path{transform-origin:center;transform:var(--transf);stroke:currentColor}.svgViewer{height:3%}.svgViewer use{color:#00bdff}.svgViewer use.mirrorHor{color:#ffc200}use.mirrorHor{--transf:scaleX(-1)}use.mirrorVer{transform:scaleY(-1)}use{transform-origin:center}.mirrorHor{--transf:scaleX(-1)}.mirrorVer{transform:scaleY(-1)}
+/*# sourceMappingURL=main.5780d1f2.chunk.css.map */
