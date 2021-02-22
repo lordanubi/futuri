@@ -2,37 +2,51 @@ import React from 'react';
 import * as Const from '../Const'
 import './LineMaker.scss'
 function LineMaker(props) {
-  //pattern maker riceve il parametro essenziale ovvero il numero di atomi che formano il pattern
-  var numberOfAtoms = props.atoms | 1
-  let spacing = (props.spacing | 1) * Const.spacing
-  function getSignAt(n) {
-    return (2-(Math.floor((n+2)* Const.phi)-Math.floor((n+1)*Const.phi)))
-  }
+  var numberOfAtoms = props.set.atoms, spacing = props.set.spacing * Const.spacing
 
-  let SemiLine = () => {
-    return Array.from(Array(numberOfAtoms), (e, i) => {
-      let state = getSignAt(i)
-      state ^= props.reversed;
-      if(state === 0 || state===1) {
-        return (<use key={i} x={(Const.logoWidth + spacing*4) * i} href="#Atom"/>)
-      } else {
-        return(<use key={i} x={(Const.logoWidth + spacing*4) * i} href="#Atom" className="mirrorHor" />)
-      }
-    })
-  }
-  //se la direttiva ci dice di usare coppie avviciniamo i gruppi delle due semiline
-  var multiplier = props.withCouples ? 1 : 2
-  return (
-    <>
-      <symbol id="SemiLine">
-        <SemiLine />
-      </symbol>
-      <symbol id="Line">
-        <use href="#SemiLine" />
-        <use x={Const.logoWidth/2 + spacing*multiplier} className="mirrorVer" href="#SemiLine" />
-      </symbol>
-    </>
-    
-    )
+    return <svg className={props.classes} id="#Line" y={props.y} x={props.x}>
+              {Array.from(Array(numberOfAtoms), (e, i) => {let classes = [],scaleX = 1, scaleY = 1, atomProps, phase
+
+                //EVENODD PERIODIC BEHAVIOUR
+                if(Const.periodBehaviour(i)) {
+                  classes.push('frequentAtom')
+                  //FLIP VERTICAL
+                  if (props.set.evenOddVerticalFlip)
+                    scaleY = -1
+                  //PHASING
+                  if (props.set.phase === 'periodic')
+                    phase = {y: -(Const.logoWidth+spacing)/2}
+                }
+
+                //QUASIPERIODIC BEHAVIOUR
+                if(Const.quasiPeriodBehaviour(i)) {
+                  classes.push('quasirareAtom')
+                  //FLIP HORIZONTAL
+                  if (props.set.quasiPeriodicHorizontalFlip)
+                    scaleX = -1
+                  //PHASING
+                  if (props.set.phase === 'quasiperiodic')
+                    phase = {y: -(Const.logoWidth+spacing)/2}
+                }
+
+                //rare behaviour [quasiperiod and evenodd period matching]
+                if(Const.quasiPeriodBehaviour(i) && Const.periodBehaviour(i)) {
+                  classes.push('rareAtom')
+                }
+
+                //constant behaviour [for the whole line]
+                if (props.mirrorVer)
+                  scaleY =  -scaleY
+                if (props.mirrorHor)
+                  scaleX =  -scaleX
+                
+                if (scaleX === -1 || scaleY === -1) 
+                atomProps = {style: {'--transf' : 'scale(' + scaleX + ',' + scaleY + ')'}}
+
+                let x = (props.set.evenOddVerticalFlip) ? (Const.logoWidth + spacing) * i : (Const.logoWidth + spacing) * i
+                //Atom at position i get printed
+                return(<use className={classes.join(' ')} x={x} href="#Atom" {...phase} {...atomProps} key={i}/>)
+              })}
+            </svg>
 }
 export default LineMaker

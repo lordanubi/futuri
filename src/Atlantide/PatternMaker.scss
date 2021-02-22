@@ -1,9 +1,16 @@
     use {
         transform-origin: center;
+        opacity: var(--LineNormalOpacity)
     }
-    .mirrorHor {
-        --transf: scaleX(-1);
-    }
-    .mirrorVer {
+    .line.mirrorVer {
         transform: scaleY(-1);
+        opacity: var(--LineMirrorVerOpacity);
+    }
+    .line.mirrorHor {
+        transform: scaleX(-1);
+        opacity: var(--LineMirrorHorOpacity);
+    }
+    .line.mirrorBoth {
+        transform: scaleX(-1) scaleY(-1);
+        opacity: var(--LineMirrorBothOpacity);
     }

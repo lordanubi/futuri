@@ -3,10 +3,27 @@ import './PatternView.scss';
 import * as Const from '../../Const'
 import PatternMaker from '../../Atlantide/PatternMaker'
 function PatternView(props)  {
+  let patternSettings = {
+    horizontal: {
+      spacing: 5,
+      atoms: 100,
+      quasiPeriodicHorizontalFlip: true,
+      evenOddVerticalFlip: true,
+      phase: false
+    },
+    vertical: {
+      spacing: 5,
+      atoms: 40,
+      quasiPeriodicHorizontalFlip: true,
+      evenOddVerticalFlip: true,
+      phase: 'periodic'
+    },
+    withCouples: false,
+    chaotic: false
+  }
   return(
     <svg viewBox={"0 0 " + Const.logoWidth + " " + Const.logoHeight} className="svgViewer">
-      {/* <PatternMaker Hspace={2} Vspace={1.5} atoms={30}  withCouples/> */}
-      <PatternMaker Hspace={1.8} Vspace={1.8} atoms={30} />
+      <PatternMaker set={patternSettings} />
     </svg>
   )
 }

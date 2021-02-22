@@ -1,9 +1,13 @@
+
+    use.frequentAtom {
+        color: var(--FrequentColor)
+    }
+    use.quasirareAtom {
+        color: var(--QuasiRareColor)
+    }
+    use.rareAtom {
+        color: var(--RareColor)
+    }
     use {
-        transform-origin: center;
-    }
-    use.mirrorHor {
-        --transf: scaleX(-1);
-    }
-    use.mirrorVer {
-        transform: scaleY(-1);
+        color: var(--NormalColor)
     }

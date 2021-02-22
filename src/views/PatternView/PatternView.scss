@@ -1,10 +1,15 @@
 .svgViewer {
     //width: 100%;
+    transform: scale(1, 1);
     height:3%;
-    use {
-        color: hsl(195.6deg, 100%, 50%)
-    }
-    use.mirrorHor {
-        color: hsl(45.6deg, 100%, 50%);
-    }
+    --blue: white;
+    --NormalColor: white;
+    --FrequentColor: white;
+    --QuasiRareColor: var(--blue);
+    --RareColor: var(--blue);
+
+    --LineMirrorVerOpacity: 1;
+    --LineMirrorHorOpacity: 1;
+    --LineNormalOpacity: 1;
+    --LineMirrorBothOpacity: 1;
 }
