@@ -5,18 +5,18 @@ import PatternMaker from '../../Atlantide/PatternMaker'
 function PatternView(props)  {
   let patternSettings = {
     horizontal: {
-      spacing: 5,
+      spacing: 2,
       atoms: 100,
       quasiPeriodicHorizontalFlip: true,
       evenOddVerticalFlip: true,
       phase: false
     },
     vertical: {
-      spacing: 5,
-      atoms: 40,
+      spacing: 2,
+      atoms: 50,
       quasiPeriodicHorizontalFlip: true,
       evenOddVerticalFlip: true,
-      phase: 'periodic'
+      phase: 'quasiperiodic'
     },
     withCouples: false,
     chaotic: false

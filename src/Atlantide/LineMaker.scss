@@ -1,13 +1,16 @@
 
-    use.frequentAtom {
-        color: var(--FrequentColor)
-    }
-    use.quasirareAtom {
-        color: var(--QuasiRareColor)
-    }
-    use.rareAtom {
-        color: var(--RareColor)
-    }
+    // use.frequentAtom {
+    //     stroke: var(--FrequentColor)
+    // }
+    // use.quasirareAtom {
+    //     stroke: var(--QuasiRareColor)
+    // }
+    // use.rareAtom {
+    //     stroke: var(--RareColor)
+    // }
     use {
-        color: var(--NormalColor)
+        color: var(--NormalColor);
     }
+    // use:hover {
+    //     color: var(--HoverColor);
+    // }

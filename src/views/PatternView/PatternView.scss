@@ -2,14 +2,9 @@
     //width: 100%;
     transform: scale(1, 1);
     height:3%;
-    --blue: white;
-    --NormalColor: white;
-    --FrequentColor: white;
+    --NormalColor: rgb(255, 255, 255);
+    --HoverColor: var(--gold);
+    --FrequentColor: var(--blue);
     --QuasiRareColor: var(--blue);
     --RareColor: var(--blue);
-
-    --LineMirrorVerOpacity: 1;
-    --LineMirrorHorOpacity: 1;
-    --LineNormalOpacity: 1;
-    --LineMirrorBothOpacity: 1;
 }

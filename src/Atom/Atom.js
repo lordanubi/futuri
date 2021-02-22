@@ -15,7 +15,7 @@ function Atom(props)  {
     Const.spacing*2, Const.logoHeight
   ].join(' ')
     return(<path
-            fill="none"
+            fill="rgba(255, 255, 255, 0);"
             stroke="hsl(45.6deg, 100%, 50%)"
             strokeWidth={Const.spacing/10*2}
             d={'M' + logoPoints + 'z'}
