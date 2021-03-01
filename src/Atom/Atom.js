@@ -1,8 +1,9 @@
 import React from 'react';
 import * as Const from '../Const'
-import './Atom.scss'
+import './Atom.css'
+import { motion } from "framer-motion"
 function Atom(props)  {
-  var logoPoints = [
+  const logoPoints = [
     Const.spacing*3, Const.logoHeight - Const.magicRatio(Const.spacing*2),
     Const.spacing*4, Const.logoHeight,
     Const.spacing*6, Const.logoHeight,
@@ -15,10 +16,9 @@ function Atom(props)  {
     Const.spacing*2, Const.logoHeight
   ].join(' ')
     return(<path
-            fill="rgba(255, 255, 255, 0);"
-            stroke="hsl(45.6deg, 100%, 50%)"
             strokeWidth={Const.spacing/10*2}
             d={'M' + logoPoints + 'z'}
+            {...props}
           />)
 }
 export default Atom;

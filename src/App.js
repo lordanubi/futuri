@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import * as Const from './Const'
 import Atom from './Atom/Atom'

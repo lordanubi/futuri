@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Const from '../Const'
 import LineMaker from './LineMaker'
-import './PatternMaker.scss'
+import './PatternMaker.css'
 function PatternMaker(props) {
   let vertical = props.set.vertical, horizontal = props.set.horizontal, spacing = vertical.spacing * Const.spacing
   return (<>
