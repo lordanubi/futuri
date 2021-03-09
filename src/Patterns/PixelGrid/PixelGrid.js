@@ -1,18 +1,18 @@
 import React from 'react';
 import GridMaker from '../../Atlantide/GridMaker';
-function PixelGridDef(props)  {
+function PixelGrid(props)  {
     let patternSettings = {
         id: "PixelGrid",
         horizontal: {
-          spacing: 2,
-          atoms: 50,
+          spacing: 4, //props.spacing
+          atoms: 30, //props.atoms
           quasiPeriodicHorizontalFlip: true,
           evenOddVerticalFlip: true,
           phase: false
         },
         vertical: {
-          spacing: 2,
-          atoms: 50,
+          spacing: 4, //props.spacing
+          atoms: 30, //props.atoms
           quasiPeriodicHorizontalFlip: true,
           evenOddVerticalFlip: true,
           phase: false
@@ -20,7 +20,7 @@ function PixelGridDef(props)  {
         withCouples: false,
         chaotic: false
       }
-    return(<GridMaker set={patternSettings} />)
+    return(<GridMaker set={patternSettings} {...props} />)
 }
-export default PixelGridDef;
+export default PixelGrid;
   

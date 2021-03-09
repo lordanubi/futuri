@@ -3,7 +3,7 @@ import * as Const from '../Const'
 
 function ColumnMaker(props) {
   const numberOfAtoms = props.set.atoms, spacing = props.set.spacing * Const.spacing
-    return <g className={props.classes + ' column'} y={props.y} transform={'translate(' +props.x + ')'}>
+    return <g y={props.y} transform={'translate(' +props.x + ')'}>
               {Array.from(Array(numberOfAtoms), (e, i) => {let classes = [],scaleX = 1, scaleY = 1, atomProps, phase
 
                 //EVENODD PERIODIC BEHAVIOUR
@@ -40,11 +40,12 @@ function ColumnMaker(props) {
                   scaleX =  -scaleX
                 
                 if (scaleX === -1 || scaleY === -1) 
-                atomProps = {style: {'--transf' : 'scale(' + scaleX + ',' + scaleY + ')'}}
+                atomProps = {style: {'--t' : 'scale(' + scaleX + ',' + scaleY + ')'}}
                 
                 let y = (Const.logoHeight + spacing) * i
                 //Atom at position i get printed
-                return(<use className={classes.join(' ')} y={y} href="#Atom" {...phase} {...atomProps} key={i}/>)
+                return(<use  y={y} href="#Atom" {...phase} {...atomProps} key={i} //className={classes.join(' ')}
+                      />)
               })}
             </g>
 }

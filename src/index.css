@@ -9,6 +9,18 @@ body {
 svg, symbol {
   overflow: visible !important;
 }
-.symbols {
-  display: none;
+filter {
+  color-interpolation-filters: sRGB;
+}
+:root {
+  --blue: hsl(195.6deg, 100%, 50%);
+  --blue2: hsl(225.6deg, 100%, 50%);
+  --gold: hsl(45.6deg, 100%, 50%);
+  --gold2: hsl(15.6deg, 100%, 50%);
+}
+use {
+  color: var(--gold);
+}
+body {
+  background-color: rgb(46, 46, 46);
 }

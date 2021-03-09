@@ -1,6 +1,7 @@
 path {
     transform-origin: center;
-    transform: var(--transf);
+    transform: var(--t);
     stroke: currentColor;
-    fill: rgba(0, 0, 0, 0);
+    /* fill: rgba(0, 0, 0, 0); */
+    fill: none;
 }
