@@ -4,15 +4,15 @@ function PixelGrid(props)  {
     let patternSettings = {
         id: "PixelGrid",
         horizontal: {
-          spacing: 4, //props.spacing
-          atoms: 30, //props.atoms
+          spacing: props.spacing, //props.spacing
+          atoms: props.atoms, //props.atoms
           quasiPeriodicHorizontalFlip: true,
           evenOddVerticalFlip: true,
           phase: false
         },
         vertical: {
-          spacing: 4, //props.spacing
-          atoms: 30, //props.atoms
+          spacing: props.spacing, //props.spacing
+          atoms: props.atoms, //props.atoms
           quasiPeriodicHorizontalFlip: true,
           evenOddVerticalFlip: true,
           phase: false

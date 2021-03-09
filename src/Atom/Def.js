@@ -14,10 +14,11 @@ function AtomDef(props)  {
     0, Const.logoHeight,
     Const.spacing*2, Const.logoHeight
   ].join(' ')
-    return(<symbol id="Atom" width={Const.logoWidth} height={Const.logoHeight} viewBox={"0 0 " + Const.logoWidth + " " + Const.logoHeight}>
+    return(<symbol id="Atom" width={Const.logoWidth} height={Const.logoHeight}>
               <path
-                strokeWidth={Const.spacing/10*2}
                 d={'M' + logoPoints + 'Z'}
+                fill="none"
+                strokeWidth={Const.spacing/10*2}
                 {...props}
               />
             </symbol>)

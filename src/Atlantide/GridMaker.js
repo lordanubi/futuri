@@ -13,7 +13,7 @@ function GridMaker(props) {
     maxX = Const.logoWidth * horizontal.atoms + hSpacing * (horizontal.atoms - 1)
   maxY = Const.logoHeight * vertical.atoms + vSpacing * (vertical.atoms -1)
         
-  return (<svg height={props.height} width={props.width} preserveAspectRatio="xMidYMid slice" id={props.set.id} viewBox={"0 0 " + maxX + " " + maxY}>
+  return (<svg id={props.set.id} preserveAspectRatio="xMidYMid slice" viewBox={"0 0 " + maxX + " " + maxY}>
     {Array.from(Array(horizontal.atoms), (e, i) => { let classes = [], mirrorHor, mirrorVer, columnProps, phase,x
       
       //EVENODD PERIODIC BEHAVIOUR

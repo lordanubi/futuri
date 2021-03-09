@@ -1,7 +1,8 @@
 path {
+    -webkit-transform-box: fill-box;
+    transform-box: fill-box;
     transform-origin: center;
     transform: var(--t);
     stroke: currentColor;
     /* fill: rgba(0, 0, 0, 0); */
-    fill: none;
 }
