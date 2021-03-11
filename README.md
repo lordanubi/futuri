@@ -1,8 +1,9 @@
 # Futuri: a React Pattern Maker
 
-https://andreafuturi.com is a React Web App that lets you create SVG Animated Pattern.
-It is made from people for the people and gives you the abilty to make infinite variations of patterns (periodic, aperiodic and quasi periodic tiling are all possibile)
-It takes advantages of React, SVG and Framer Motion to make the most simple while cool and fluid animated patterns on the web. All scalable, interactable and fine-tunable.
+Futuri is a React SVG Framework that lets you develope Neomorphic interface without hassle.
+It gives you the abilty to make infinite variations of patterns (periodic, aperiodic and quasi periodic tiling are all possibile) based on any SVG component.
+It will let you give light to your site (dinamically calculated shadows and highlithgs of buttons etc..)
+It takes advantages of React, SVG and Framer Motion to make the most simple while cool and fluid animated graphics on the web. All scalable, interactable and fine-tunable.
 
 ## Installation
 Open the folder with VisualStudio Code and type in the Terminal
