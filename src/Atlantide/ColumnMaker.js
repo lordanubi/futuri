@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Const from '../Const'
+import Atom from '../Atom/Atom.js'
 
 function ColumnMaker(props) {
   const numberOfAtoms = props.set.atoms, spacing = props.set.spacing * Const.spacing
@@ -39,13 +40,14 @@ function ColumnMaker(props) {
                 if (props.mirrorHor)
                   scaleX =  -scaleX
                 
-                if (scaleX === -1 || scaleY === -1) 
-                atomProps = {style: {'--t' : 'scale(' + scaleX + ',' + scaleY + ')'}}
+                atomProps = {
+                  ...(scaleX === -1 || scaleY === -1) && {mirroring : 'scale(' + scaleX + ',' + scaleY + ')'},
+                  key: i
+                }
                 
                 let y = (Const.logoHeight + spacing) * i
                 //Atom at position i get printed
-                return(<use  y={y} href="#Atom" {...phase} {...atomProps} key={i} //className={classes.join(' ')}
-                      />)
+                return(<Atom y={y} {...phase} {...atomProps} raw />)
               })}
             </g>
 }

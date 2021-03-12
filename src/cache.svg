@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <symbol id="Atom">
+        <path id="a" stroke="white" style="-webkit-transform-box:fill-box;transform-box:fill-box;transform-origin:center;transform:var(--t);" class="atom" fill="none" stroke-width="20" d="M300 550l100 138h200L400 413l100-138 300 413h200L500 0 0 688h200z"/>
+    </symbol>
+    <svg id="AtomStatic">
+        <use href="#Atom" />
+    </svg>
+</svg>

@@ -4,15 +4,15 @@ function PixelGrid(props)  {
     let patternSettings = {
         id: "PixelGrid",
         horizontal: {
-          spacing: props.spacing, //props.spacing
-          atoms: props.atoms, //props.atoms
+          spacing: props.spacing || 0, //props.spacing
+          atoms: props.atoms || 1, //props.atoms
           quasiPeriodicHorizontalFlip: true,
           evenOddVerticalFlip: true,
           phase: false
         },
         vertical: {
-          spacing: props.spacing, //props.spacing
-          atoms: props.atoms, //props.atoms
+          spacing: props.spacing || 0, //props.spacing
+          atoms: props.atoms || 1, //props.atoms
           quasiPeriodicHorizontalFlip: true,
           evenOddVerticalFlip: true,
           phase: false
@@ -20,7 +20,7 @@ function PixelGrid(props)  {
         withCouples: false,
         chaotic: false
       }
-    return(<GridMaker set={patternSettings} {...props} />)
+      return <GridMaker set={patternSettings} {...props} />
 }
-export default PixelGrid;
+export default PixelGrid
   
