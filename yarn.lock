@@ -3767,11 +3767,6 @@ cssstyle@^2.3.0:
   dependencies:
     cssom "~0.3.6"
 
-csstype@^2.6.7:
-  version "2.6.16"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.16.tgz#544d69f547013b85a40d15bff75db38f34fe9c39"
-  integrity sha512-61FBWoDHp/gRtsoDkq/B1nWrCUG/ok1E3tUrcNbZjsE9Cxd9yzUirjS3+nAATB8U4cTtaQmAHbNndoFz5L6C9Q==
-
 cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
@@ -6727,20 +6722,6 @@ jsprim@^1.2.2:
     array-includes "^3.1.2"
     object.assign "^4.1.2"
 
-jsxstyle-utils@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/jsxstyle-utils/-/jsxstyle-utils-2.4.0.tgz#687383fc73449fb9ad57a9a0b4d9e73375b608ac"
-  integrity sha512-o49qKOW0wqjTA/52tiTl/7wMw9Hz6KG9xiQQ7flYJTxwPr8Ojdryao88VxTpFPBK/NeCvLmQhDOgZpLH+oyjww==
-  dependencies:
-    csstype "^2.6.7"
-
-jsxstyle@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/jsxstyle/-/jsxstyle-2.4.0.tgz#4ee6d6d60af41904964bf9bd082372549abdc769"
-  integrity sha512-dqaig2s8d11+R5OQ/UxW2N3nbWyBE8mSox5ucCYgCHHNMPLyTFoPjEFPHT31dAGDDBd/BhQuEGoLPF9mWYYY8g==
-  dependencies:
-    jsxstyle-utils "^2.4.0"
-
 killable@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
@@ -8919,14 +8900,6 @@ raw-body@2.4.0:
     http-errors "1.7.2"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
-
-raw-loader@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/raw-loader/-/raw-loader-4.0.2.tgz#1aac6b7d1ad1501e66efdac1522c73e59a584eb6"
-  integrity sha512-ZnScIV3ag9A4wPX/ZayxL/jZH+euYb6FcUinPcgiQW0+UBtEv0O6Q3lGd3cqJ+GHH+rksEv3Pj99oxJ3u3VIKA==
-  dependencies:
-    loader-utils "^2.0.0"
-    schema-utils "^3.0.0"
 
 react-app-polyfill@^2.0.0:
   version "2.0.0"

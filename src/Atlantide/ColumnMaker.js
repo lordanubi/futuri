@@ -1,11 +1,11 @@
 import React from 'react';
 import * as Const from '../Const'
 import Atom from '../Atom/Atom.js'
-
-function ColumnMaker(props) {
+function LineMaker(props) {
   const numberOfAtoms = props.set.atoms, spacing = props.set.spacing * Const.spacing
     return <g y={props.y} transform={'translate(' +props.x + ')'}>
-              {Array.from(Array(numberOfAtoms), (e, i) => {let classes = [],scaleX = 1, scaleY = 1, atomProps, phase
+              {Array.from(Array(numberOfAtoms), (e, i) => {
+                let classes = [],scaleX = 1, scaleY = 1, atomProps, phase
 
                 //EVENODD PERIODIC BEHAVIOUR
                 if(Const.periodBehaviour(i)) {
@@ -34,7 +34,6 @@ function ColumnMaker(props) {
                   classes.push('rareAtom')
                 }
 
-                //constant behaviour [for the whole Column]
                 if (props.mirrorVer)
                   scaleY =  -scaleY
                 if (props.mirrorHor)
@@ -47,8 +46,8 @@ function ColumnMaker(props) {
                 
                 let y = (Const.logoHeight + spacing) * i
                 //Atom at position i get printed
-                return(<Atom y={y} {...phase} {...atomProps} raw />)
+                return <Atom y={y} {...phase} {...atomProps} shadow />
               })}
             </g>
 }
-export default ColumnMaker
+export default LineMaker

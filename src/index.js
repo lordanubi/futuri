@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import PixelGrid from './Patterns/PixelGrid/PixelGrid'
 import Light from './Filters/Light';
-import PrintSVG from './Atlantide/SvgRender/PrintSVG'
+import LineMaker from './Atlantide/LineMaker'
+import * as Const from './Const'
+
 function App() {
+  //app size based on window size data?
+  const appHeight = 20
+  const appWidth = 54
     return (<svg height="100%" width="100%">
-				      <rect width="100%" height="100%" />
-					    <PrintSVG></PrintSVG><PixelGrid atoms={100} />
+              <rect width="100%" height="100%" />
+              <svg preserveAspectRatio="xMinYMin meet" viewBox={`0 0 1 ${Const.realLogoHeight*appHeight}`} ><LineMaker flow="horizontal" y={688.9} x={1000} quasiPeriodicHorizontalFlip evenOddVerticalFlip atoms={appWidth} /></svg>
             </svg>)
     return (
     //for the sake of comodity, the svg of the interface is going to be (0 0 100 100)
