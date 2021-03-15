@@ -1,6 +1,6 @@
-# Futuri: a React SVG Framework
+# RVG: a React SVG Framework
 
-Futuri is a React SVG Framework that lets you develope Neomorphic interface without hassle.
+RVG is a React SVG Framework that lets you develope Neomorphic interface without hassle.
 It gives you the abilty to make infinite variations of patterns (periodic, aperiodic and quasi periodic tiling are all possibile) based on any SVG component.
 It will let you give light to your site (dinamically calculated shadows and highlithgs of buttons etc..)
 It takes advantages of React, SVG and Framer Motion to make the most simple while cool and fluid animated graphics on the web. All scalable, interactable and fine-tunable.
