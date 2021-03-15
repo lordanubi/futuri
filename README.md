@@ -1,6 +1,6 @@
-# Futuri: a React Pattern Maker
+# RVG: a React SVG Framework
 
-Futuri is a React SVG Framework that lets you develope Neomorphic interface without hassle.
+RVG is a React SVG Framework that lets you develope Neomorphic interface without hassle.
 It gives you the abilty to make infinite variations of patterns (periodic, aperiodic and quasi periodic tiling are all possibile) based on any SVG component.
 It will let you give light to your site (dinamically calculated shadows and highlithgs of buttons etc..)
 It takes advantages of React, SVG and Framer Motion to make the most simple while cool and fluid animated graphics on the web. All scalable, interactable and fine-tunable.
@@ -19,23 +19,26 @@ yarn install
 ## Usage
 
 ```jsx
-let patternSettings = {
-    horizontal: {
-      spacing: 0, //space between lines
-      atoms: 20, //number of logos per line
-      quasiPeriodicHorizontalFlip: true, //ordered chaos 
-      evenOddVerticalFlip: true, //flip every other logo
-      phase: //can be 'periodic' or 'quasiperiodic'
-    },
-    vertical: {
-      spacing: 0, //space between columns
-      atoms: 20, //number of logos per column
-      quasiPeriodicHorizontalFlip: true, //ordered chaos 
-      evenOddVerticalFlip: true, //flip every line
-      phase: false //can be 'periodic' or 'quasiperiodic'
-    }
-  }
-  return(<svg><PatternMaker set={patternSettings} /></svg>)
+
+import React from 'react';
+import RVG from '../Atlantide/SvgRender/RVG' //might be a npm package in the future
+
+function Circle({x, y, ...props}) {
+        return <circle r={20} cx={x} cy={y} {...props} />
+}
+Circle.css = `circle {
+    transform-box: fill-box;
+    transform-origin: center;
+    stroke: white;
+    stroke-width: ${variable};
+    fill: none;`
+Circle.width = 20
+Circle.height = 20
+
+//config
+Button.useShadow = true //if set true on big components may ease the performance
+
+export default RVG(Button)
 
 
 ```
