@@ -25,7 +25,6 @@ import RVG from '../Atlantide/SvgRender/RVG' //might be a npm package in the fut
 
 function Circle({x, y, ...props}) {
         return <circle r={20} cx={x} cy={y} {...props} />
-        //id should be added even if not explicit here
 }
 Circle.css = `circle {
     transform-box: fill-box;
