@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Const from '../Const'
-import LineMaker from './LineMaker'
+import LineMaker from './ColumnMaker'
 function GridMaker(props) {
   let vertical = props.set.vertical, horizontal = props.set.horizontal,
   hSpacing = horizontal.spacing * Const.spacing, maxX,

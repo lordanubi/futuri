@@ -1,53 +1,50 @@
 import React from 'react';
 import * as Const from '../Const'
-import Atom from '../Atom/Atom.js'
-function LineMaker(props) {
-  const numberOfAtoms = props.set.atoms, spacing = props.set.spacing * Const.spacing
-    return <g y={props.y} transform={'translate(' +props.x + ')'}>
-              {Array.from(Array(numberOfAtoms), (e, i) => {
-                let classes = [],scaleX = 1, scaleY = 1, atomProps, phase
 
-                //EVENODD PERIODIC BEHAVIOUR
-                if(Const.periodBehaviour(i)) {
-                  classes.push('frequentAtom')
-                  //FLIP VERTICAL
-                  if (props.set.evenOddVerticalFlip)
-                    scaleY = -1
-                  //PHASING
-                  if (props.set.phase === 'periodic')
-                    phase = {x: -(Const.logoWidth+spacing)/2}
-                }
+function ColumnMaker(props) {
 
-                //QUASIPERIODIC BEHAVIOUR
-                if(Const.quasiPeriodBehaviour(i)) {
-                  classes.push('quasirareAtom')
-                  //FLIP HORIZONTAL
-                  if (props.set.quasiPeriodicHorizontalFlip)
-                    scaleX = -1
-                  //PHASING
-                  if (props.set.phase === 'quasiperiodic')
-                    phase = {x: -(Const.logoWidth+spacing)/2}
-                }
+  let spacing = (props.spacing || 0) * Const.spacing //this maybe should be Component.spacing?
+  let oldStyle = props.children.props.style || {}
+  
+  return Array.from(Array(props.atoms || 1), (e, i) => { //for every atom calculate its postion and mirroring
 
-                //rare behaviour [quasiperiod and evenodd period matching]
-                if(Const.quasiPeriodBehaviour(i) && Const.periodBehaviour(i)) {
-                  classes.push('rareAtom')
-                }
+      //child refernce but we can update its props
+      let Child = (updatedProps) =>  React.cloneElement(props.children, updatedProps)
 
-                if (props.mirrorVer)
-                  scaleY =  -scaleY
-                if (props.mirrorHor)
-                  scaleX =  -scaleX
-                
-                atomProps = {
-                  ...(scaleX === -1 || scaleY === -1) && {mirroring : 'scale(' + scaleX + ',' + scaleY + ')'},
-                  key: i
-                }
-                
-                let y = (Const.logoHeight + spacing) * i
-                //Atom at position i get printed
-                return <Atom y={y} {...phase} {...atomProps} shadow />
-              })}
-            </g>
+      //some datas
+      let scaleX = 1, scaleY = 1
+      let xStart = props.x || 0, yStart = props.y || 0 //if not set start drawing at (0;0)
+      let componentWidth = props.children.type.width, componentHeight = props.children.type.height
+
+      if (props.evenOddVerticalFlip && props.flow === "horizontal")
+        componentWidth = componentWidth/2 //if atoms are horizontal in evenodd vertical flip mode they must be spaced half
+
+      //logic of repetition
+      if(Const.periodBehaviour(i)) { //EVENODD PERIODIC BEHAVIOUR
+          if (props.evenOddVerticalFlip) 
+              scaleY = -1 //FLIP VERTICAL
+
+          if (props.phase === 'periodic') 
+              xStart -= (componentWidth+spacing)/2  //Move even atoms a bit to the left
+      }
+
+      if(Const.quasiPeriodBehaviour(i)) { //QUASIPERIODIC BEHAVIOUR
+            if (props.quasiPeriodicHorizontalFlip) 
+              scaleX = -1   //FLIP HORIZONTAL
+            if (props.phase === 'quasiperiodic')
+            xStart -= (componentWidth+spacing)/2
+       }
+       //if there's some mirroring happening in this column we invert the scale factors
+          scaleY = props.mirrorVer ? -scaleY : scaleY
+          scaleX =  props.mirrorHor ? -scaleX : scaleX
+          yStart += (componentHeight + spacing) * i
+        
+          let inlineStyle = {...(scaleX === -1 | scaleY === -1) && {
+            '--t': `scale(${scaleX},${scaleY})`
+          }}
+          
+          //Atom at position i get printed
+          return <Child y={yStart} x={xStart} style={{...oldStyle, ...inlineStyle}} key={i}/>
+        })
 }
-export default LineMaker
+export default ColumnMaker

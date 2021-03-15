@@ -1,37 +1,32 @@
 import React, {useEffect, useState} from 'react';
-import GetStyle from '../Utils/GetComponentCSS';
 import Use from './Use'
 
-function RVG({children, x, y, firstInstance}) {
-    //utility (is it the first instance of this component in the app?)
-    children.type.count = 0
-    const [firstTime, setFirstTime] = useState(false)
-    useEffect(() => { setFirstTime(children.type.count++ === 0); return () => { children.type.count-- } }, [])
-    let isFirstInstance = (firstTime || firstInstance)
+function RVG(Component) {
+    let component = function(...props) {
+        
+        //utility (is it the first instance of this component in the app?)
+        Component.count = 0
+        let [isFirstInstance, setIsFirstInstance] = useState(false)
+        useEffect(() => { setIsFirstInstance(Component.count++ === 0); return () => {Component.count-- } }, [])
 
-    //take id referencing for <use> from child function name
-    const componentId = children.type.name
+        //load css of the child (we might need that later)
+        let Css = () => <style>{Component.css}</style>
 
-    //load css of the child (we might need that later)
-    const css = <GetStyle of ={children} />
+        //load child with an identifier and props OR load use referincing to that id with props
+        let component = <Component id={Component.name} {...!Component.useShadow && props[0]} />
+        let shadowComponent = <Use id={Component.name} {...props[0]} />
 
-    //load inline style of the child (might be used later for <use> shadowComponent)
-    const inlineStyle = children.props.style
+        //if using shadow dom we hide the first component cause its used for reference
+        let first = Component.useShadow ? <><defs><Css />{component}</defs>{shadowComponent}</> : <><Css />{component}</>
+        let instance = Component.useShadow ? shadowComponent : component
 
-    const postionAndStyle = {x : x, y: y, style: inlineStyle}
-    //either Child or Use are going to get positionAndStyling depending on shadow behaviour of the component
+        return isFirstInstance ? first : instance
+    }
+    component.width = Component.width
+    component.height = Component.height
+    Object.defineProperty(component, "name", { value: Component.name })
 
-    //child ref but we can update props
-    const Child = (updatedProps) =>  React.cloneElement(children, updatedProps)
-    
-    //load child with an identifier and styles OR load use referincing to that id with styles
-    const component = <Child id={componentId} {...!children.type.useShadow && postionAndStyle} />
-    const shadowComponent = <Use id={componentId} {...children.type.useShadow && postionAndStyle} />
-
-    //if using shadow dom we hide the first component used for reference
-    let first = children.type.useShadow ? <><defs>{css}{component}</defs>{shadowComponent}</> : <>{css}{component}</>
-    let instance = children.type.useShadow ? shadowComponent : component
-    return isFirstInstance ? first : instance
+    return component
            
 }
 export default RVG

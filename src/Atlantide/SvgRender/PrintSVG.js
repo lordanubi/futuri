@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server'
 function Image({x, y, style, children})  {
-    const Svg = () => {
+    let Svg = () => {
       return <svg style={style} xmlns="http://www.w3.org/2000/svg">
                 {React.Children.map(children, (child) =>
                   React.cloneElement(child, { firstInstance: true })
