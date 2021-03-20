@@ -27,18 +27,16 @@ function Circle({x, y, ...props}) {
         return <circle r={20} cx={x} cy={y} {...props} />
 }
 Circle.css = `circle {
-    transform-box: fill-box;
-    transform-origin: center;
     stroke: white;
-    stroke-width: ${variable};
+    stroke-width: ${Constant.stroke};
     fill: none;`
 Circle.width = 20
 Circle.height = 20
 
 //config
-Button.useShadow = true //if set true on big components may ease the performance
+Circle.useShadow = true //if set true on big components may ease the performance
 
-export default RVG(Button)
+export default RVG(Circle)
 
 
 ```
