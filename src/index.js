@@ -6,17 +6,18 @@ import Light from './Filters/Light';
 import ColumnMaker from './Atlantide/ColumnMaker'
 import * as Const from './Const'
 import Atom from './Atom/Atom'
+import Button from './Atom/Button';
 
 function App() {
   //app size based on window size data?
   const appHeight = 20
-  const appWidth = 54
+  const appWidth = 59
     return (<svg height="100%" width="100%">
               <rect width="100%" height="100%" />
-              <svg preserveAspectRatio="xMinYMin meet" viewBox={`0 0 1 ${Const.realLogoHeight*appHeight}`} >
-                <ColumnMaker flow="horizontal" y={0} x={0} quasiPeriodicHorizontalFlip evenOddVerticalFlip atoms={appWidth}>
-                  <Atom style={{'--c': 'var(--gold)'}} />
-                </ColumnMaker>
+              <svg preserveAspectRatio="xMidYMid slice" viewBox={`0 0 ${((Const.logoWidth/2)+ Const.stroke/2) *appWidth} ${Const.realLogoHeight*appHeight}`} >
+                  <PixelGrid spacing={5} height={appHeight} width={appWidth}>
+                    <Atom style={{'--c': 'var(--gold)' }}/>
+                  </PixelGrid>
               </svg>
             </svg>)
     return (

@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
+    "hoist-non-react-statics": "^3.3.2",
     "mini-svg-data-uri": "^1.2.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

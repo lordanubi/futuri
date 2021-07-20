@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Const from '../Const'
-import LineMaker from './ColumnMaker'
+import ColumnMaker from './ColumnMaker'
 function GridMaker(props) {
   let vertical = props.set.vertical, horizontal = props.set.horizontal,
   hSpacing = horizontal.spacing * Const.spacing, maxX,
@@ -13,12 +13,11 @@ function GridMaker(props) {
     maxX = Const.logoWidth * horizontal.atoms + hSpacing * (horizontal.atoms - 1)
   maxY = Const.logoHeight * vertical.atoms + vSpacing * (vertical.atoms -1)
         
-  return (<svg id={props.set.id} preserveAspectRatio="xMidYMid slice" viewBox={"0 0 " + maxX + " " + maxY}>
-    {Array.from(Array(horizontal.atoms), (e, i) => { let classes = [], mirrorHor, mirrorVer, LineProps, phase,x
-      
+  return Array.from(Array(horizontal.atoms), (e, i) => { let classes = [], mirrorHor, mirrorVer, ColumnProps, phase,x
+
       //EVENODD PERIODIC BEHAVIOUR
       if(Const.periodBehaviour(i)) {
-        classes.push('frequentLine')
+        classes.push('frequentColumn')
 
         //FLIP VERTICAL
         if (horizontal.evenOddVerticalFlip)
@@ -30,7 +29,7 @@ function GridMaker(props) {
 
       //QUASIPERIODIC BEHAVIOUR
       if(Const.quasiPeriodBehaviour(i)) {
-        classes.push('quasirareLine')
+        classes.push('quasirareColumn')
 
         //FLIP HORIZONTAL
         if (horizontal.quasiPeriodicHorizontalFlip)
@@ -42,22 +41,21 @@ function GridMaker(props) {
 
       //rare behaviour [quasiperiod and evenodd period matching]
       if(Const.quasiPeriodBehaviour(i) && Const.periodBehaviour(i)) {
-        classes.push('rareLine')
+        classes.push('rareColumn')
       }
 
-      //constant behaviour [for the whole Line]
+      //constant behaviour [for the whole Column]
       if (!props.set.chaotic)
-        LineProps = {mirrorVer: mirrorVer, mirrorHor: mirrorHor}
+        ColumnProps = {mirrorVer: mirrorVer, mirrorHor: mirrorHor}
       else
-        LineProps = {mirrorHor: mirrorVer, mirrorVer: mirrorHor}
-      //Line at position i get printed
+        ColumnProps = {mirrorHor: mirrorVer, mirrorVer: mirrorHor}
+      //Column at position i get printed
       if (horizontal.evenOddVerticalFlip)
         x = (Const.logoWidth/2 + hSpacing) * i
       else 
         x = (Const.logoWidth + hSpacing) * i
-      return(<LineMaker {...phase} x={x} set={vertical} {...LineProps} key={i} //classes={classes.join(' ')}
-              />)
-    })}
-  </svg>)
+      return(<ColumnMaker {...phase} x={x} {...vertical} {...ColumnProps} key={i} //classes={classes.join(' ')}
+              >{props.children}</ColumnMaker>)
+    })
 }
 export default GridMaker

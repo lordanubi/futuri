@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Const from '../Const'
 
 function ColumnMaker(props) {
-
+  
   let spacing = (props.spacing || 0) * Const.spacing //this maybe should be Component.spacing?
   let oldStyle = props.children.props.style || {}
-  
   return Array.from(Array(props.atoms || 1), (e, i) => { //for every atom calculate its postion and mirroring
 
       //child refernce but we can update its props
@@ -39,12 +38,19 @@ function ColumnMaker(props) {
           scaleX =  props.mirrorHor ? -scaleX : scaleX
           yStart += (componentHeight + spacing) * i
         
-          let inlineStyle = {...(scaleX === -1 | scaleY === -1) && {
+          let newStyle = {...(scaleX === -1 | scaleY === -1) && {
             '--t': `scale(${scaleX},${scaleY})`
           }}
           
           //Atom at position i get printed
-          return <Child y={yStart} x={xStart} style={{...oldStyle, ...inlineStyle}} key={i}/>
+          return <Child y={yStart} x={xStart} style={{...oldStyle, ...newStyle}} key={i}/>
         })
 }
 export default ColumnMaker
+
+
+/*
+BUG : QUANDO SALVI QUESTO FILE LA PRIMA ISTANZA DI UN COMPONENETE NON SI COMPORTA COME DOVREBBE
+POTREBBE ESSERE PERCHE USIAMO UN CLONE ANZICHE L'ISTANZA STESSA
+
+*/
