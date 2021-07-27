@@ -3,22 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import PixelGrid from './Patterns/PixelGrid/PixelGrid'
 import Light from './Filters/Light';
-import ColumnMaker from './Atlantide/ColumnMaker'
 import * as Const from './Const'
 import Atom from './Atom/Atom'
+import Image from './Atlantide/SvgRender/PrintSVG'
 import Button from './Atom/Button';
 
 function App() {
   //app size based on window size data?
   const appHeight = 20
-  const appWidth = 59
+  const appWidth = 80
     return (<svg height="100%" width="100%">
               <rect width="100%" height="100%" />
-              <svg preserveAspectRatio="xMidYMid slice" viewBox={`0 0 ${((Const.logoWidth/2)+ Const.stroke/2) *appWidth} ${Const.realLogoHeight*appHeight}`} >
-                  <PixelGrid spacing={5} height={appHeight} width={appWidth}>
-                    <Atom style={{'--c': 'var(--gold)' }}/>
+              <PixelGrid spacing={3} height={appHeight} width={appWidth}>
+                    <Atom style={{'--c': 'var(--blue)' }}/>
                   </PixelGrid>
-              </svg>
             </svg>)
     return (
     //for the sake of comodity, the svg of the interface is going to be (0 0 100 100)

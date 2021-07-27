@@ -5,7 +5,7 @@ function RVG(Component) {
     Component.count = 0
     let component = function(...props) {
         //load css of the child (we might need that later)
-        let Css = () => <style>{Component.css}</style>
+        let Css = () => Component.css ? <style>{Component.css}</style> : ''
 
         //load child with an identifier and props OR load use referincing to that id with props
         let component = <Component id={Component.useShadow ? Component.name : undefined} {...!Component.useShadow && props[0]} />

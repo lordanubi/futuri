@@ -1,4 +1,0 @@
-
-function getAtomPositionAt(n) {
-
-}

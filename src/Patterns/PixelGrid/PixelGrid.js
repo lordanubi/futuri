@@ -22,8 +22,12 @@ function PixelGrid(props)  {
         withCouples: false,
         chaotic: false
       }
-      return <GridMaker set={patternSettings} {...props} >{props.children}</GridMaker>
+      console.log(props.children.type.height)
+      return <svg preserveAspectRatio="xMidYMid slice" viewBox={`0 0 ${props.children.type.width *props.width} ${props.children.type.height*props.height}`} >
+        <GridMaker set={patternSettings} {...props} >{props.children}</GridMaker>
+        </svg>
 }
+//problema da risolvere (come sappiamo quanti atomi ci saranno dentro? queste proprietà devono essere dinamiche)
 PixelGrid.width = (Const.logoWidth/2 + Const.stroke/2) * 59 
 PixelGrid.height = Const.realLogoHeight*20
 export default RVG(PixelGrid)
