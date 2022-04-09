@@ -1,32 +1,22 @@
-import React, {useEffect, useState} from 'react';
+import React, {useRef,useEffect} from 'react';
+import Define from './Define';
 import Use from './Use'
 
 function RVG(Component) {
     Component.count = 0
-    let component = function(...props) {
-        //load css of the child (we might need that later)
-        let Css = () => Component.css ? <style>{Component.css}</style> : ''
-
-        //load child with an identifier and props OR load use referincing to that id with props
-        let component = <Component id={Component.useShadow ? Component.name : undefined} {...!Component.useShadow && props[0]} />
-        let shadowComponent = <Use id={Component.name} {...props[0]} />
-
-        //if using shadow dom we hide the first component cause its used for reference
-        let first = Component.useShadow ? <><defs><Css />{component}</defs>{shadowComponent}</> : <><Css />{component}</>
-        let instance = Component.useShadow ? shadowComponent : component
-
-        let isFirstInstance = Component.count===1
-        Component.count++
-        
-        let result = isFirstInstance ? first : instance
-        return result
-    }
-    console.log(<Component />)
+        let component = function(...props) {
+            let isFirstInstance = Component.count===1
+            Component.count++
+            if (isFirstInstance)
+                return <Define><Component {...props[0]} /></Define>
+            else if (Component.useShadow)
+                return <Use className={Component.count} id={Component.name} {...props[0]} />
+            else 
+                return <Component />
+        }
+    Object.defineProperty(component, "name", { value: Component.name })
     component.width = Component.width
     component.height = Component.height
-
-    Object.defineProperty(component, "name", { value: Component.name })
-
     return component
            
 }

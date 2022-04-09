@@ -3,7 +3,7 @@ import RVG from '../Atlantide/SvgRender/RVG'
 
 
 function Button({x, y, ...props}) {
-        return <circle r={500} cx={x} cy={y} {...props} />
+        return <circle r={500} cx={x} cy={y} />
 }
 Button.css = `circle {fill: red;}`
 
