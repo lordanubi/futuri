@@ -1,0 +1,32 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "Atlantide/SvgRender/Backup": true,
+        "Filters": true,
+        "Atom/SVG": true,
+        "Fonts": true,
+        "Const": true,
+        "Patterns": true,
+        "Patterns/PixelGrid": true,
+        ".vscode": true,
+        "Atom/Button.js": true,
+        "Atlantide/SvgRender/Image.js": true
+    },
+    "hide-files.files": [
+        "Atlantide/SvgRender/Backup",
+        "Filters",
+        "Atom/SVG",
+        "Fonts",
+        "Const",
+        "Patterns",
+        "Patterns/PixelGrid",
+        ".vscode",
+        "Atom/Button.js",
+        "Atlantide/SvgRender/Image.js"
+    ]
+}

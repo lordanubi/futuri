@@ -1,22 +1,26 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import * as Const from '../Const'
-import Transform from './SvgRender/Transform';
+import Transform from './SvgRender/SimpleTools/Transform';
 
 function ColumnMaker(props) {
-  
+  const [width, setWidth] = useState();
+  const [height, setHeight] = useState();
+  const test = React.useCallback(node => {
+    if (node !== null) {
+        const box = node.getBBox()
+        setHeight(box.height)
+        setWidth(box.width)
+    }
+  }, [])
   let spacing = (props.spacing || 0)
-  let oldStyle = props.children.props.style || {}
-
-      //child refernce but we can update its props (vorrei cercare di non usarlo in realtà)
-      let Child = (updatedProps) =>  React.cloneElement(props.children, updatedProps)
-
-
   return Array.from(Array(props.atoms || 1), (e, i) => { //for every atom calculate its postion and mirroring
-      //some datas
-      let scaleX = 1, scaleY = 1
-      let xStart = props.x || 0, yStart = props.y || 0 //if not set start drawing at (0;0)
-      let componentWidth = props.children.type.width, componentHeight = props.children.type.height
 
+
+        //some datas
+        let scaleX = 1, scaleY = 1
+        let xStart = props.x || 0, yStart = props.y || 0 //if not set start drawing at (0;0)
+        let componentHeight = height || props.children.type.height
+        let componentWidth = width || props.children.type.width
       if (props.evenOddVerticalFlip && props.flow === "horizontal")
         componentWidth = componentWidth/2 //if atoms are horizontal in evenodd vertical flip mode they must be spaced half (this is actually something based on the shape of the logo and should be decided somewhere else maybe like manually with negative spacing maybe)
 
@@ -45,17 +49,13 @@ function ColumnMaker(props) {
           scaleX =  props.mirrorHor ? -scaleX : scaleX
           
           yStart += (componentHeight + spacing) * i
-          let newStyle = {...(scaleX === -1 | scaleY === -1) && {
-            '--t': `scale(${scaleX},${scaleY})`
-          }}
-          newStyle = {}
 
           //mirrorHor={scaleX === -1 } mirrorVer={scaleY === -1}
           //x e y vanno cambiati quando c'è uno reflect?
 
           //x and y could be transform={`translate(${xStart},${yStart})`} as well ma bisognerebbe passarli all' <use>
           //Atom at position i get printed
-          return <Transform x={xStart} y={yStart} key={i} mirrorHor={scaleX === -1 } mirrorVer={scaleY === -1}>{props.children}</Transform>
+          return <Transform x={xStart} y={yStart} key={i} mirrorHor={scaleX === -1 } mirrorVer={scaleY === -1}><g ref={test}>{props.children}</g></Transform>
         })
 }
 export default ColumnMaker

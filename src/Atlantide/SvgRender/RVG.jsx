@@ -1,20 +1,23 @@
-import React, {useRef,useEffect} from 'react';
+import React from 'react';
 import Define from './Define';
-import Use from './Use'
+import Use from './SimpleTools/Use'
 
 function RVG(Component) {
-    Component.count = 0
+    //let's see if it's the first time priting the object in the page, if so let's define it first
+    Component.count = 0 
         let component = function(...props) {
+
             let isFirstInstance = Component.count===1
             Component.count++
-            if (isFirstInstance)
+            if (isFirstInstance || props[0].define)
                 return <Define><Component {...props[0]} /></Define>
             else if (Component.useShadow)
-                return <Use className={Component.count} id={Component.name} {...props[0]} />
+                return <Use id={Component.name} {...props[0]} />
             else 
-                return <Component />
+                return <Component {...props[0]} />
         }
-    Object.defineProperty(component, "name", { value: Component.name })
+    Object.defineProperty(component, "name", { value: Component.name})
+    
     component.width = Component.width
     component.height = Component.height
     return component
