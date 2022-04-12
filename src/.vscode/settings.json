@@ -8,25 +8,25 @@
         "**/Thumbs.db": true,
         "Atlantide/SvgRender/Backup": true,
         "Filters": true,
-        "Atom/SVG": true,
         "Fonts": true,
         "Const": true,
         "Patterns": true,
         "Patterns/PixelGrid": true,
         ".vscode": true,
         "Atom/Button.js": true,
-        "Atlantide/SvgRender/Image.js": true
+        "Atlantide/SvgRender/Image.js": true,
+        "Atom/SVG": true
     },
     "hide-files.files": [
         "Atlantide/SvgRender/Backup",
         "Filters",
-        "Atom/SVG",
         "Fonts",
         "Const",
         "Patterns",
         "Patterns/PixelGrid",
         ".vscode",
         "Atom/Button.js",
-        "Atlantide/SvgRender/Image.js"
+        "Atlantide/SvgRender/Image.js",
+        "Atom/SVG"
     ]
 }

@@ -1,6 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react';
 import * as Const from '../Const'
-import Transform from './SvgRender/SimpleTools/Transform';
 
 function ColumnMaker(props) {
   const [width, setWidth] = useState();
@@ -13,6 +12,7 @@ function ColumnMaker(props) {
     }
   }, [])
   let spacing = (props.spacing || 0)
+  let Child = (updatedProps) =>  React.cloneElement(props.children, updatedProps)
   return Array.from(Array(props.atoms || 1), (e, i) => { //for every atom calculate its postion and mirroring
 
 
@@ -50,12 +50,8 @@ function ColumnMaker(props) {
           
           yStart += (componentHeight + spacing) * i
 
-          //mirrorHor={scaleX === -1 } mirrorVer={scaleY === -1}
-          //x e y vanno cambiati quando c'è uno reflect?
-
-          //x and y could be transform={`translate(${xStart},${yStart})`} as well ma bisognerebbe passarli all' <use>
           //Atom at position i get printed
-          return <Transform x={xStart} y={yStart} key={i} mirrorHor={scaleX === -1 } mirrorVer={scaleY === -1}><g ref={test}>{props.children}</g></Transform>
+          return <g key={i} ref={test}><Child x={xStart} y={yStart} mirrorHor={scaleX === -1 } mirrorVer={scaleY === -1} /></g>
         })
 }
 export default ColumnMaker

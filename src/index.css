@@ -26,11 +26,3 @@ filter {
   font-family: Objectivity;
   src: url('Fonts/Objectivity/Objectivity-LightSlanted.otf');
 }
-/* dovrebbe essere accopiato a Flip e apparire solo la prima volta che flip viene chiamato (rvg) */
-svg * {
-  transform-box: fill-box; transform-origin: center;
-}
-.scale {
-  transform-origin: revert;
-    transform-box: revert;
-}

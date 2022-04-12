@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+//sicuramente in sta merda si può togliere il g che è inutile
 function Define({children}) {
 
     const [width, setWidth] = useState();

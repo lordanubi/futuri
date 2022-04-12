@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function Interface({children, image,fixed, width, height}) {
+function Interface({children, image,fixed, viewBoxWidth, viewBoxHeight, width, height, x,y}) {
   const [autoWidth, setWidth] = useState();
   const [autoHeight, setHeight] = useState();
   const svg = React.useCallback(node => {
@@ -11,6 +11,6 @@ function Interface({children, image,fixed, width, height}) {
     }
   }, []);
 
-    return <svg preserveAspectRatio={fixed ? 'xMidYMid slice' : undefined} viewBox={`0 0 ${width || autoWidth || 0} ${height || autoHeight || 0}`} ref={svg} xmlns={image ? "http://www.w3.org/2000/svg" : undefined}>{children}</svg>
+    return <svg y={y} width={width} height={height} preserveAspectRatio={fixed ? 'xMidYMid slice' : undefined} viewBox={`0 0 ${viewBoxWidth || autoWidth || 0} ${viewBoxHeight || autoHeight || 0}`} ref={svg} xmlns={image ? "http://www.w3.org/2000/svg" : undefined}>{children}</svg>
 }
 export default Interface

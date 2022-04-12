@@ -11,7 +11,7 @@ function RVG(Component) {
             Component.count++
             if (isFirstInstance || props[0].define)
                 return <Define><Component {...props[0]} /></Define>
-            else if (Component.useShadow)
+            else if (Component.useShadow && props[0].shadow != false)
                 return <Use id={Component.name} {...props[0]} />
             else 
                 return <Component {...props[0]} />
