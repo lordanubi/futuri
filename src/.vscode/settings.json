@@ -15,7 +15,8 @@
         ".vscode": true,
         "Atom/Button.js": true,
         "Atlantide/SvgRender/Image.js": true,
-        "Atom/SVG": true
+        "Atom/SVG": true,
+        "Atlantide/SvgRender/RVGbackup.jsx": true
     },
     "hide-files.files": [
         "Atlantide/SvgRender/Backup",
@@ -27,6 +28,7 @@
         ".vscode",
         "Atom/Button.js",
         "Atlantide/SvgRender/Image.js",
-        "Atom/SVG"
+        "Atom/SVG",
+        "Atlantide/SvgRender/RVGbackup.jsx"
     ]
 }

@@ -4,10 +4,17 @@ import Use from './SimpleTools/Use'
 
 function RVG(Component) {
     //let's see if it's the first time priting the object in the page, if so let's define it first
-    Component.count = 0 
+    Component[Component.name] = 0
         let component = function(...props) {
-            let isFirstInstance = Component.count===1
-            Component.count++
+
+            React.useEffect(() => {
+                return () => {
+                    Component[Component.name]=0
+                  }
+              }, [])
+            let isFirstInstance = Component[Component.name]===1
+            Component[Component.name]++
+
             if (isFirstInstance|| props[0].define)
                 return <Define><Component {...props[0]} /></Define>
             else if (Component.useShadow && props[0].shadow !== false)

@@ -10,5 +10,6 @@ Rect.width = 1000
 Rect.height = 1000
 Rect.useShadow = false
 */
+Rect.css = 'rect {fill: black;}'
 
-export default Rect
+export default RVG(Rect)

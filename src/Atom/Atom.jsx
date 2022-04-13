@@ -22,6 +22,6 @@ function Atom({x, y ,innerRef, color, mirrorHor, mirrorVer}) {
 Atom.css = `path {fill: white; transform-box: fill-box; transform-origin: center; transform: var(--t);}`
 Atom.width = logoWidth
 Atom.height = logoHeight
-Atom.useShadow = false
+Atom.useShadow = true
 
 export default RVG(Atom)
