@@ -4,19 +4,10 @@ import Use from './SimpleTools/Use'
 
 function RVG(Component) {
     //let's see if it's the first time priting the object in the page, if so let's define it first
-    var i = 0
+    Component.count = 0 
         let component = function(...props) {
-            const [array,setArray] = React.useState([])
-            React.useLayoutEffect(() => {
-                i++
-                if (i===1) {
-                    console.log(Component.name + ' first render')
-                    setArray([...array,Component.name + ' first render'] );
-                }
-              })
-              if (array.length>0)
-              console.log(array)
-            let isFirstInstance = i===1
+            let isFirstInstance = Component.count===1
+            Component.count++
             if (isFirstInstance|| props[0].define)
                 return <Define><Component {...props[0]} /></Define>
             else if (Component.useShadow && props[0].shadow !== false)

@@ -11,4 +11,4 @@ Rect.height = 1000
 Rect.useShadow = false
 */
 
-export default RVG(Rect)
+export default Rect
