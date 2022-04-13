@@ -1,25 +1,13 @@
 import React, {useState} from 'react'
 //sicuramente in sta merda si può togliere il g che è inutile
-function Define({children}) {
 
-    const [width, setWidth] = useState();
-    const [height, setHeight] = useState();
-    const test = React.useCallback(node => {
-      if (node !== null) {
-          const box = node.getBBox()
-          setHeight(box.height)
-          setWidth(box.width)
-      }
-    }, [])
+function Define({children}) {
     
 //non so perché ma vorrei togliere useShadow da qua e migliorre il css
 
     //load css of the component
-    let Css = () => children.type.css ? <style>{children.type.css}</style> : ''
-    //load component with ref id or component
-    let component = children.type.useShadow ? <g id={children.type.name}>{children}</g> : children
+    let css = children.type.css ? <style>{children.type.css}</style> : ''
 
-
-    return <g ref={test}><Css />{component}</g>
+    return <>{css}{children.type.useShadow ? <g id={children.type.name}>{children}</g> : children}</>
 }
 export default Define

@@ -5,8 +5,6 @@ import RVG from '../Atlantide/SvgRender/RVG'
 function Rect({x, y, width, height, color}) {
         return <rect transform={`translate(${-width/2},${-height/2})`} x={x} y={y} width={width} height={height} fill={color} />
 }
-Rect.css = `circle {fill: red;}`
-
 /*
 Rect.width = 1000
 Rect.height = 1000

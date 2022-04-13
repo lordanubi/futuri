@@ -1,6 +1,6 @@
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import './index.css';
 import PixelGrid from './Patterns/PixelGrid/PixelGrid'
 import Light from './Filters/Light';
@@ -12,11 +12,11 @@ import Define from './Atlantide/SvgRender/Define';
 import PixelLine from './Patterns/PixelGrid/PixelLine';
 import Rect from './Atom/Rect';
 function App() {
-    return <svg height="100%" width="100%" preserveAspectRatio='xMixYMid slice'>
+    return <svg height="100%" width="100%">
             <Interface width="100%" height="100%">
               <Rect color="red" width={1800} height={300} x='50%' y='50%' />
             </Interface>
-            <Transform size={0.7}>
+            <Transform from="center" size={0.6}>
               <Interface width="100%" height="100%" image>
                 <Transform size={0.4}>
                   <PixelLine spacing={250} width={26}>
@@ -61,7 +61,9 @@ function App() {
       </>
     )
 }
-ReactDOM.render(<React.StrictMode><App /></React.StrictMode>, document.getElementById('root'))
+const container = document.getElementById('root');
+const root = ReactDOMClient.createRoot(container);
+root.render(<React.StrictMode><App /></React.StrictMode>)
 
 let moveLight = event => {
   var x = event.clientX /window.innerWidth*100;

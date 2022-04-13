@@ -19,7 +19,7 @@ function Atom({x, y ,innerRef, color, mirrorHor, mirrorVer}) {
     
     return <path fill={color || undefined} ref={innerRef} className={isActive ? 'selected': null} onClick={toggleClass} d={points} /> //id should be added even if not explicit here
 }
-Atom.css = `path {transform-box: fill-box; transform-origin: center; transform: var(--t);}`
+Atom.css = `path {fill: white; transform-box: fill-box; transform-origin: center; transform: var(--t);}`
 Atom.width = logoWidth
 Atom.height = logoHeight
 Atom.useShadow = false
