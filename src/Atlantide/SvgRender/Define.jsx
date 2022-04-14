@@ -1,13 +1,7 @@
-import React, {useState} from 'react'
-//sicuramente in sta merda si può togliere il g che è inutile
-
-function Define({children}) {
-    
-//non so perché ma vorrei togliere useShadow da qua e migliorre il css
-
+import React from 'react'
+function Define({component}) {
     //load css of the component
-    let css = children.type.css ? <style>{children.type.css}</style> : ''
-
-    return <>{css}{children.type.useShadow ? <g id={children.type.name}>{children}</g> : children}</>
+    return component.css ? <style>{component.css}</style> : null
 }
+
 export default Define

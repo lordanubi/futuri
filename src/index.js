@@ -12,31 +12,33 @@ import Define from './Atlantide/SvgRender/Define';
 import PixelLine from './Patterns/PixelGrid/PixelLine';
 import Rect from './Atom/Rect';
 function App() {
+  let lineSpacing = 350
+  let smallLogoSpacing =250 || 550
+  let bigLogoSpacing = 250
+  let smallLogoSize = 0.403
     return <svg height="100%" width="100%">
             <Interface width="100%" height="100%">
               <Rect color="red" width={1800} height={300} x='50%' y='50%' />
             </Interface>
-            <Transform from="center" size={0.70}>
-              <Interface width="100%" height="100%" image>
-                <Transform size={0.4}>
-                  <PixelLine spacing={250} width={26}>
+              <Interface image>
+
+                <Transform size={smallLogoSize}>
+                  <PixelLine spacing={smallLogoSpacing} width={38}>
                     <Atom />
                   </PixelLine>
                 </Transform>
-                <Transform y={Atom.height*0.4 + 150}>
-                  <PixelLine spacing={250} width={10}>
+                <Transform y={Atom.height*smallLogoSize + lineSpacing}>
+                  <PixelLine spacing={bigLogoSpacing} width={15}>
                     <Atom />
                   </PixelLine>
                 </Transform>
-                <Transform size={0.4} y={Atom.height*0.4 + Atom.height + 300}>
-                  <PixelLine spacing={250} width={26}>
+                <Transform size={smallLogoSize} y={Atom.height*smallLogoSize + lineSpacing + Atom.height + lineSpacing}>
+                  <PixelLine spacing={smallLogoSpacing} width={38}>
                     <Atom />
                     </PixelLine>
                 </Transform>
 
               </Interface>
-
-            </Transform>
             </svg>
               
     return (
