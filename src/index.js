@@ -1,16 +1,20 @@
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
 import PixelGrid from './Patterns/PixelGrid/PixelGrid'
-import Light from './Filters/Light';
+import Light from './Filters/Light'
 import Atom from './Atom/Atom'
-import Background from './Site/Background';
-import Transform from './Atlantide/SvgRender/SimpleTools/Transform';
-import Interface from './Atlantide/SvgRender/Interface';
-import Define from './Atlantide/SvgRender/Define';
-import PixelLine from './Patterns/PixelGrid/PixelLine';
-import Rect from './Atom/Rect';
+import Background from './Site/Background'
+import Transform from './Atlantide/SvgRender/SimpleTools/Transform'
+import Interface from './Atlantide/SvgRender/Interface'
+import Define from './Atlantide/SvgRender/Define'
+import PixelLine from './Patterns/PixelGrid/PixelLine'
+import Rect from './Atom/Rect'
+import Image
+ from './Atlantide/SvgRender/Image'
+import ColumnMaker from './Atlantide/ColumnMaker'
+import Repeat from './Atlantide/Repeat'
 function App() {
   let lineSpacing = 350
   let smallLogoSpacing =250 || 550
@@ -21,7 +25,9 @@ function App() {
               <Rect color="red" width={1800} height={300} x='50%' y='50%' />
             </Interface>
               <Interface image>
-
+                <Repeat times={10}><Atom /></Repeat> 
+                {/* 
+                  REPEAT BUGGA IL COMPONENT COUNT, COLUMN MAKER NON LO FACEVA
                 <Transform size={smallLogoSize}>
                   <PixelLine spacing={smallLogoSpacing} width={38}>
                     <Atom />
@@ -36,7 +42,7 @@ function App() {
                   <PixelLine spacing={smallLogoSpacing} width={38}>
                     <Atom />
                     </PixelLine>
-                </Transform>
+                </Transform> */}
 
               </Interface>
             </svg>

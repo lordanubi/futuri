@@ -2,16 +2,17 @@ import React, {useRef, useEffect, useState} from 'react';
 import * as Const from '../Const'
 
 function ColumnMaker(props) {
+
   let spacing = (props.spacing || 0)
+
   let Child = (updatedProps) =>  React.cloneElement(props.children, updatedProps)
   return Array.from(Array(props.atoms || 1), (e, i) => { //for every atom calculate its postion and mirroring
-
-
         //some datas
         let scaleX = 1, scaleY = 1
         let xStart = props.x || 0, yStart = props.y || 0 //if not set start drawing at (0;0)
-        let componentHeight = props.children.type.height
-        let componentWidth = props.children.type.width
+        let componentHeight = props.children.type.heigth || 1609
+        let componentWidth = props.children.type.width || 1106
+
       if (props.evenOddVerticalFlip && props.flow === "horizontal")
         componentWidth = componentWidth/2 //if atoms are horizontal in evenodd vertical flip mode they must be spaced half (this is actually something based on the shape of the logo and should be decided somewhere else maybe like manually with negative spacing maybe)
 
@@ -42,7 +43,7 @@ function ColumnMaker(props) {
           yStart += (componentHeight + spacing) * i
 
           //Atom at position i get printed
-          return <Child key={i} x={xStart} y={yStart} mirrorHor={scaleX === -1 } mirrorVer={scaleY === -1} />
+          return <g key={i}><Child x={xStart} y={yStart} mirrorHor={scaleX === -1 } mirrorVer={scaleY === -1} /></g>
         })
 }
 export default ColumnMaker

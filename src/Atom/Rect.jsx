@@ -8,8 +8,8 @@ function Rect({x, y, width, height, color}) {
 /*
 Rect.width = 1000
 Rect.height = 1000
-Rect.useShadow = false
 */
+Rect.useShadow = false
 Rect.css = 'rect {fill: white;}'
 
 export default RVG(Rect)
