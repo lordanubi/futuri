@@ -5,15 +5,8 @@ import './index.css'
 import PixelGrid from './Patterns/PixelGrid/PixelGrid'
 import Light from './Filters/Light'
 import Atom from './Atom/Atom'
-import Background from './Site/Background'
-import Transform from './Atlantide/SvgRender/SimpleTools/Transform'
 import Interface from './Atlantide/SvgRender/Interface'
-import Define from './Atlantide/SvgRender/Define'
-import PixelLine from './Patterns/PixelGrid/PixelLine'
 import Rect from './Atom/Rect'
-import Image
- from './Atlantide/SvgRender/Image'
-import ColumnMaker from './Atlantide/ColumnMaker'
 import Repeat from './Atlantide/Repeat'
 function App() {
   let lineSpacing = 350

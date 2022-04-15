@@ -1,14 +1,11 @@
 import React from 'react'
-import getSizeOnServer from './getSizeOnServer'
+import getSizeOnServer from './Functions/getSizeOnServer'
 
-function Define({useShadow,children}) {
+//potremmo anche ritornare sempre un firstComponent con l'id (tanto servirà per altri controlli del framework)
+function Define({children}) {
+    let style = children.type.css && <style>{children.type.css}</style>
     let serverSize = getSizeOnServer(children)
-    React[children.type.name] = {}
-    React[children.type.name].width = serverSize.width
-    React[children.type.name].height = serverSize.height
-    
-    //potremmo anche ritornare sempre un firstComponent con l'id (tanto servirà per altri controlli del framework)
-    return <g id={useShadow ? children.type.name : undefined}>{children}</g>
+    React[children.type.name] = {width: serverSize.width,height: serverSize.height}
+    return <g id={children.type.useShadow ? children.type.name : undefined}>{style}{children}</g>
 }
-
 export default Define

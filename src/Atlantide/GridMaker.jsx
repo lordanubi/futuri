@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Const from '../Const'
-import ColumnMaker from './ColumnMaker'
+import Repeat from './Repeat'
 
 function GridMaker(props) {
   let vertical = props.set.vertical, horizontal = props.set.horizontal,
@@ -49,8 +49,8 @@ function GridMaker(props) {
         x = (props.children.type.width + hSpacing) * i
       
       //Column at position i get printed
-      return(<ColumnMaker {...phase} x={x} {...vertical} {...ColumnProps} key={i} //classes={classes.join(' ')}
-              >{props.children}</ColumnMaker>)
+      return(<Repeat {...phase} x={x} {...vertical} {...ColumnProps} key={i} //classes={classes.join(' ')}
+              >{props.children}</Repeat>)
     })
 }
 function getBound(child) {

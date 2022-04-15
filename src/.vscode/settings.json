@@ -6,29 +6,17 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "Atlantide/SvgRender/Backup": true,
-        "Filters": true,
         "Fonts": true,
         "Const": true,
-        "Patterns": true,
-        "Patterns/PixelGrid": true,
         ".vscode": true,
-        "Atom/Button.js": true,
-        "Atlantide/SvgRender/Image.js": true,
-        "Atom/SVG": true,
-        "Atlantide/SvgRender/RVGbackup.jsx": true
+        "Filters": true,
+        "Atlantide/SvgRender/Image.jsx": true
     },
     "hide-files.files": [
-        "Atlantide/SvgRender/Backup",
-        "Filters",
         "Fonts",
         "Const",
-        "Patterns",
-        "Patterns/PixelGrid",
         ".vscode",
-        "Atom/Button.js",
-        "Atlantide/SvgRender/Image.js",
-        "Atom/SVG",
-        "Atlantide/SvgRender/RVGbackup.jsx"
+        "Filters",
+        "Atlantide/SvgRender/Image.jsx"
     ]
 }
