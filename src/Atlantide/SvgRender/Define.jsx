@@ -1,7 +1,8 @@
 import React from 'react'
-function Define({Of}) {
-    let Component = Of.name
-    let style = Of.css && <style id={Component+'Style'}>{Of.css}</style>
-    return <defs>{style}{Of.useShadow && <g id={Component}>{<Of />}</g>}</defs>
+
+function Define({children}) {
+    let name = children.type.name
+    let style = children.type.css && <style id={name+'Style'}>{children.type.css}</style>
+    return <>{style}{children.type.useShadow && <g id={name}>{children}</g>}</>
 }
 export default Define

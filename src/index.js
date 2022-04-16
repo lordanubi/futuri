@@ -9,6 +9,7 @@ import Interface from './Atlantide/SvgRender/Interface'
 import Rect from './Atom/Rect'
 import Repeat from './Atlantide/Repeat'
 import PixelLine from './Patterns/PixelLine/PixelLine'
+import Image from './Atlantide/SvgRender/Image'
 
 function App() {
   let lineSpacing = 350
@@ -16,14 +17,19 @@ function App() {
   let bigLogoSpacing = 250
   let smallLogoSize = 0.403
     return <svg height="100%" width="100%">
-            <Interface width="100%" height="100%">
-              <Rect color="red" width={1800} height={300} x='50%' y='50%' />
-            </Interface>
-              <Interface image>
-              <Repeat flow="horizontal" times={100}>
-                <PixelLine width={100}/>
-                </Repeat>
-              </Interface>
+            <Image>
+                  <defs>
+                    <Atom fill="var(--gold)" define /><PixelLine width={600} define /><Rect define />
+                  </defs>
+                  <Interface width="100%" height="100%">
+                    <Rect color="red" width={1800} height={300} x='50%' y='50%' />
+                  </Interface>
+                    <Interface image>
+                    <Repeat flow="horizontal" times={50}>
+                      <PixelLine width={50} />
+                      </Repeat>
+                    </Interface>
+                </Image>
             </svg>
               
     return (
@@ -48,6 +54,7 @@ function App() {
       </>
     )
 }
+//prima di renderizzare l'app si può fare un ottimizzazione del codice svg 
 ReactDOM.render(<React.StrictMode><App /></React.StrictMode>, document.getElementById('root'))
 
 let moveLight = event => {

@@ -1,9 +1,9 @@
-import { useState, useCallback,useLayoutEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 function useDimensions(ref) {
   const [autoWidth, setWidth] = useState()
   const [autoHeight, setHeight] = useState()
-  useLayoutEffect(() => {
+  useEffect(() => {
     const box = ref.current.getBBox()
     setWidth(Math.round(box.width))
     setHeight(Math.round(box.height))

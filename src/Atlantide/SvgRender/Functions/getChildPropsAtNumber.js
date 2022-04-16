@@ -12,7 +12,7 @@ function getChildPropsAtNumber(i, childWidth, childHeight, spacing, evenOddVerti
   //QUASIPERIODIC BEHAVIOUR
   if (quasiPeriodBehaviour(i) && quasiPeriodicHorizontalFlip) scaleX = -scaleX; 
   
-  return {x: x+xStart, y: y+yStart, mirrorHor: scaleX === -1, mirrorVer: scaleY === -1}
+  return {x: x+xStart || 0, y: y+yStart || 0, mirrorHor: scaleX === -1, mirrorVer: scaleY === -1}
 }
 export default getChildPropsAtNumber
 
