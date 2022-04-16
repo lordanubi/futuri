@@ -8,6 +8,8 @@ import Atom from './Atom/Atom'
 import Interface from './Atlantide/SvgRender/Interface'
 import Rect from './Atom/Rect'
 import Repeat from './Atlantide/Repeat'
+import PixelLine from './Patterns/PixelLine/PixelLine'
+
 function App() {
   let lineSpacing = 350
   let smallLogoSpacing =250 || 550
@@ -18,25 +20,9 @@ function App() {
               <Rect color="red" width={1800} height={300} x='50%' y='50%' />
             </Interface>
               <Interface image>
-                <Repeat times={10}><Atom /></Repeat> 
-                {/* 
-                  REPEAT BUGGA IL COMPONENT COUNT, COLUMN MAKER NON LO FACEVA
-                <Transform size={smallLogoSize}>
-                  <PixelLine spacing={smallLogoSpacing} width={38}>
-                    <Atom />
-                  </PixelLine>
-                </Transform>
-                <Transform y={Atom.height*smallLogoSize + lineSpacing}>
-                  <PixelLine spacing={bigLogoSpacing} width={15}>
-                    <Atom />
-                  </PixelLine>
-                </Transform>
-                <Transform size={smallLogoSize} y={Atom.height*smallLogoSize + lineSpacing + Atom.height + lineSpacing}>
-                  <PixelLine spacing={smallLogoSpacing} width={38}>
-                    <Atom />
-                    </PixelLine>
-                </Transform> */}
-
+              <Repeat flow="horizontal" times={100}>
+                <PixelLine width={100}/>
+                </Repeat>
               </Interface>
             </svg>
               

@@ -1,26 +1,8 @@
-import React from 'react';
-import GridMaker from '../../Atlantide/GridMaker';
-
-function PixelGrid({spacing, width, height, children})  {
-    let patternSettings = {
-        id: "PixelGrid",
-        horizontal: {
-          spacing: spacing || 0,
-          atoms: width || 1,
-          quasiPeriodicHorizontalFlip: true,
-          evenOddVerticalFlip: true,
-          phase: false
-        },
-        vertical: {
-          spacing: spacing || 0,
-          atoms: height || 1,
-          quasiPeriodicHorizontalFlip: true,
-          evenOddVerticalFlip: true,
-          phase: false
-        },
-        withCouples: false,
-        chaotic: false
-      }
-      return <GridMaker set={patternSettings} >{children}</GridMaker>
+import React from 'react'
+import Atom from '../../Atom/Atom'
+import Repeat from '../../Atlantide/Repeat'
+import RVG from '../../Atlantide/SvgRender/RVG'
+function PixelGrid({x,y,mirrorHor, mirrorVer, spacing, width, height, flow})  {
+  return <Repeat x={x} y={y} mirrorHor={mirrorHor} mirrorVer={mirrorVer} times={width} flow={flow} spacing={spacing}><PixelLine /></Repeat> 
 }
-export default PixelGrid
+export default RVG(PixelGrid)
