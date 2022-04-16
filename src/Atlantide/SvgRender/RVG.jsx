@@ -14,7 +14,8 @@ function RVG(Component) {
             React.useEffect(() => { return () => { Component[Component.name]=0}}, []) //quando c'è un rerender si riazzera il conteggio        
             Component[Component.name]++
             let comp = <Component {...props[0]} />
-            return <>{useFirst && init} {comp}</>
+            let shadow = <Use id={Component.name} {...props[0]} />
+            return <>{useFirst && init} {Component.useShadow===true ? shadow : comp}</>
         }
     Object.defineProperty(component, "name", { value: Component.name})
     return component
