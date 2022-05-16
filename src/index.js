@@ -1,61 +1,56 @@
-
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import PixelGrid from './Patterns/PixelGrid/PixelGrid'
-import Light from './Filters/Light'
 import Atom from './Atom/Atom'
-import Interface from './Atlantide/SvgRender/Interface'
-import Rect from './Atom/Rect'
-import Repeat from './Atlantide/Repeat'
-import PixelLine from './Patterns/PixelLine/PixelLine'
-import Image from './Atlantide/SvgRender/Image'
+import React from 'react'
+import ReactDOMServer,{renderToStaticMarkup} from 'react-dom/server'
+import { createRoot } from 'react-dom/client';
 
+import './index.css'
+import PixelLine from './Patterns/PixelLine/PixelLine';
 function App() {
-  let lineSpacing = 350
-  let smallLogoSpacing =250 || 550
-  let bigLogoSpacing = 250
-  let smallLogoSize = 0.403
-    return <svg height="100%" width="100%">
-            <Image>
-                  <defs>
-                    <Atom fill="var(--gold)" define /><PixelLine width={600} define /><Rect define />
-                  </defs>
-                  <Interface width="100%" height="100%">
-                    <Rect color="red" width={1800} height={300} x='50%' y='50%' />
-                  </Interface>
-                    <Interface image>
-                    <Repeat flow="horizontal" times={50}>
-                      <PixelLine width={50} />
-                      </Repeat>
-                    </Interface>
-                </Image>
-            </svg>
-              
-    return (
-    //for the sake of comodity, the svg of the interface is going to be (0 0 100 100)
-      <>
-      <Light name="backLight" />
-        <svg onMouseMove={moveLight} viewBox="0 0 100 100" width="100%" height="100%" className="svgViewer">
-        <rect style={{filter: "url(#BaseRelief)"}} width={100} height={100} />
-        </svg>
-
-
-        <Scale size={2/5}>
-                  <PixelGrid spacing={0} height={26} width={55}>
-                        <Atom/>
-                  </PixelGrid>
-                </Scale>
-                <Scale size={2/25}>
-                  <PixelGrid spacing={0} height={130} width={280}>
-                        <Atom/>
-                  </PixelGrid>
-                </Scale>
-      </>
-    )
+    return <svg height="100%" width="100%"><PixelLine atoms={2}/><PixelLine atoms={2}/></svg>
 }
-//prima di renderizzare l'app si può fare un ottimizzazione del codice svg 
-ReactDOM.render(<React.StrictMode><App /></React.StrictMode>, document.getElementById('root'))
+
+function define(Comp) {
+  count++
+  console.log(count,Comp)
+
+  let componentName = Comp.type?.name
+  let firstLetter = componentName ? componentName[0] : undefined
+  let isListOfComp = Comp[0]
+  let children = Comp.props?.children
+  let isNotHTML = firstLetter?.toUpperCase() === firstLetter
+  let isNotDefinedYet = definedComp.includes(componentName) === false
+  
+  //se è una lista di comp li cicliamo e li definiamo uno ad uno
+  if (isListOfComp) {Comp.map(Comp => define(Comp)); return}
+
+  //se il componente ha figlii dobbiamo definire anche loro
+  if (children) define(children)
+
+  //se non è già stato fatto segniamo che il componente è stato incontrato e non deve essere ridefinito.
+  if (componentName && isNotDefinedYet) definedComp.push(componentName + count)
+
+
+  //se non ha figli però è un componente allora eseguiamo la sua funzione per vedere che c'è dentro (solo se non è già stato definito)
+  if (isNotHTML && isNotDefinedYet) {
+    eval(`
+    define(${componentName}(Comp.props))
+    `)
+    //define(Atom())
+  } 
+
+}
+
+
+
+
+
+const container = document.getElementById('root').insertAdjacentHTML('afterbegin',renderToStaticMarkup(<App />))
+// const root = createRoot(container) // createRoot(container!) if you use TypeScript
+// root.render(<React.StrictMode><App /></React.StrictMode>)
+
+
+
+
 
 let moveLight = event => {
   var x = event.clientX /window.innerWidth*100;
@@ -64,7 +59,3 @@ let moveLight = event => {
     light.setAttribute("y", y)
     light.setAttribute("x", x)
 })}
-
-if (module.hot) {
-  module.hot.accept()
-}

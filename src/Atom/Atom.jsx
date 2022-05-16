@@ -6,7 +6,6 @@ const logoWidth = 1607.6
 const logoHeight = Const.magicRatio(logoWidth)
 function Atom({x, y , color, mirrorHor, mirrorVer}) {
     //const [isActive, setActive] = useState(false);const toggleClass = () => {setActive(!isActive);}; //se l'atomo è stato cliccato
-
     let points
     if (mirrorHor && mirrorVer)
         points = `m${logoWidth + (x || 0)} ${(y || 0)}l-803.8,${logoHeight}l-803.8,-${logoHeight}h347.6l146.8,202l146.8,-202h347.6l-320.6,441.3l135.6,186.5l456.2,-627.8h347.6l0,0zm-331.9,30.9l-471.9,649.6l-173.8,-239.2l298.1,-410.4h-271.1l-162.6,223.7l-162.6,-223.7h-271.1l743.1,1022.8l743,-1022.8l-271.1,0l0,0z`
